@@ -15,11 +15,15 @@ button {
   font-size: inherit;
   font-family: inherit;
   border: none;
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 7px 10px;
 }
 
 .container {
-  width: 1135px;
-  border: 1px solid red;
+  max-width: 1135px;
+  /* border: 1px solid red; */
   margin: 0 auto;
 }
 
@@ -29,15 +33,35 @@ h1 {
   margin-bottom: 20px;
 }
 
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
 /* --- HEADER ---- */
 header {
   height: 60px;
+  /* border: 2px red solid; */
 }
 
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 2px red solid;
 }
 
 header .container img {
@@ -50,7 +74,7 @@ header nav {
   gap: 10px;
 }
 
-header nav :is(a, button) {
+header nav a {
   display: flex;
   border-radius: 20px;
   padding: 7px 10px;
@@ -60,11 +84,6 @@ header nav :is(a, button) {
 
 header a:hover {
   background-color: grey;
-}
-
-header button {
-  background-color: black;
-  color: white;
 }
 
 /* --- MAIN ---- */
@@ -82,7 +101,7 @@ main section p {
   margin-bottom: 15px;
 }
 
-main a {
+main p a {
   text-decoration: underline;
 }
 
@@ -106,7 +125,6 @@ main a {
 /** --- MAIN : images---- **/
 .imageBlock {
   height: 430px;
-  /* border: 5px purple solid; */
   display: flex;
   gap: 2px;
 }
@@ -114,23 +132,15 @@ main a {
 .imageBlock > div:first-child {
   height: 100%;
   flex: 1;
-  /* background-color: #ff5d5d; */
-}
-
-.imageBlock div:first-child img:first-child {
   position: relative;
 }
 
 .imageBlock > div:last-child {
+  height: 100%;
   width: 480px;
   flex-direction: column;
   display: flex;
   gap: 2px;
-  height: 100%;
-}
-
-.imageBlock > div:last-child > div {
-  height: 50%;
 }
 
 .imageBlock img {
@@ -139,11 +149,150 @@ main a {
   object-fit: cover;
 }
 
+.imageBlock > div:last-child div {
+  height: calc((100% - 2px) / 2);
+}
+
 #TC-logo {
   width: 84px;
   height: 84px;
   position: absolute;
   background-color: orange;
+  left: 15px;
 }
 
+main nav:nth-of-type(2) {
+  /* border: green 8px solid; */
+  display: flex;
+  font-size: 12px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+main nav:nth-of-type(2) a:hover {
+  text-decoration: underline;
+}
+
+/** --- MAIN : description SF---- **/
+.description-ville {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description-ville div:first-child {
+  width: 590px;
+}
+
+.description-ville > div:first-child p {
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.description-ville > div:nth-child(2) {
+  width: 470px;
+  /* border: 5px purple solid; */
+}
+
+.description-ville div:nth-child(2) div:nth-child(1) {
+  width: 100%;
+  padding: 50px;
+  border-radius: 20px 20px 0 0;
+  /* border: 5px purple solid; */
+}
+
+.description-ville > div:nth-child(2) div:first-child {
+  background-color: #ff5d5d;
+}
+
+.description-ville img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0 0 20px 20px;
+}
+
+/** --- MAIN : unmissable---- **/
+.entertainment {
+  /* border: 1px green solid; */
+  height: 300px; /* temporaire */
+  display: flex;
+}
+
+.entertainment > div:first-child {
+  /* background-color: greenyellow; */
+  height: 100%;
+  width: 270px;
+}
+
+.entertainment > div:last-child {
+  /* background-color: rgb(198, 116, 190); */
+  height: 100%;
+  flex: 1;
+  display: flex;
+  gap: 15px;
+  overflow: hidden;
+  overflow-x: scroll; /* why is it hidden? */
+}
+
+.entertainment p {
+  font-size: 18px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-bottom: 10px;
+}
+
+.entertainment a {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+/** --- MAIN : carrousel---- **/
+.col {
+  height: 100%;
+  width: calc((100% - 30px) / 3);
+  /* border: 1px black solid; */
+  flex-shrink: 0;
+}
+
+.col > div {
+  height: 200px;
+  position: relative;
+}
+
+.col img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.col p {
+  font-family: TS-reg, sans-serif;
+  font-size: 14px;
+}
+
+.circle {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* --- FOOTER ---- */
+
+/* --- RESPONSIVE ------ */
+@media (max-width: 1024px) {
+  header nav p {
+    /* texts next to icons no longer show*/
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  header nav p {
+    /* texts next to icons no longer show*/
+    display: none;
+  }
+}

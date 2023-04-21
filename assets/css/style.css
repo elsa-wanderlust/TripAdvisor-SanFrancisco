@@ -6,6 +6,7 @@
 body {
   font-family: TS-reg, sans-serif;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -61,7 +62,16 @@ header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px red solid;
+  /* border: 2px red solid; */
+}
+
+header .container div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+header .visibleXS {
+  display: none;
 }
 
 header .container img {
@@ -121,7 +131,10 @@ main p a {
   padding: 11px 16px;
   align-items: center;
 }
-
+/* hides 'vols' and 'croisieres' unless smaller display*/
+.menu div:nth-child(n + 6):nth-child(-n + 7) {
+  display: none;
+}
 /** --- MAIN : images---- **/
 .imageBlock {
   height: 430px;
@@ -230,7 +243,7 @@ main nav:nth-of-type(2) a:hover {
   display: flex;
   gap: 15px;
   overflow: hidden;
-  overflow-x: scroll; /* why is it hidden? */
+  overflow-x: scroll;
 }
 
 .entertainment p {
@@ -283,16 +296,69 @@ main nav:nth-of-type(2) a:hover {
 /* --- FOOTER ---- */
 
 /* --- RESPONSIVE ------ */
+@media (max-width: 1184px) {
+  /* nav in menu displays in 2 rows*/
+  main .container .menu > div {
+    flex: none;
+    width: calc(
+      (100vw - 30px - 60px) / 4
+        /*ELSA - is 100% same as 100vw, with padding i/o margin, do we need to include it in the calc?*/
+    ); /* 60px: margin in container from 768px, 30px = gap in btw the div */
+  }
+  .menu div:nth-child(n + 6):nth-child(-n + 7) {
+    display: inline-flex;
+  }
+  .menu {
+    /* height: 101px; */
+    flex-wrap: wrap;
+  }
+  .imageBlock {
+    height: 370px;
+  }
+  .imageBlock > div:last-child {
+    width: 400px;
+  }
+}
+
 @media (max-width: 1024px) {
+  /* texts next to icons no longer show*/
   header nav p {
-    /* texts next to icons no longer show*/
     display: none;
+  }
+  .imageBlock {
+    height: 275px;
   }
 }
 
 @media (max-width: 768px) {
-  header nav p {
-    /* texts next to icons no longer show*/
+  /* burger menu appears*/
+  header .visibleXS {
+    display: inline;
+  }
+  /* logo size decreases*/
+  header .container img {
+    height: 27px;
+  }
+  /* nav icons (except last one) and button no longer show*/
+  header nav a:nth-child(-n + 3) {
+    /* ELSA - need to dry with the not, and include the button in there too*/
+    display: none;
+  }
+  header nav button {
+    display: none;
+  }
+  .container {
+    margin: 10px 30px; /* why not padding instead, could be done outside of media query*/
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .imageBlock > div:last-child {
     display: none;
   }
 }
+
+/*elsa to do: at 768max the menu needs to become a carrousel*/
+/*elsa to do: at 768max the golden gate pic shouldnt have a padding => if a property is applied 
+to a parent, it can not be not applied to one of the children => the way to approach is, 
+is to apply the class at all the chilren vs the parents.*/
